@@ -3,7 +3,7 @@
 
 Bot để farm steam card từ `Nodejs` .
 
-‘ MÌNH KHÔNG PHẢI CHỦ SOURE CODE NÀY, MÌNH CHỈ VIỆT HOÁ VÀ FIX LỖI THÔI, NHƯNG CÓ BÊ ĐI ĐÂU THÌ GHI NGUỒN LÀ TỪ MÌNH, CÁM ƠN ` cho mình xin 1 starts nha :3
+`MÌNH KHÔNG PHẢI CHỦ SOURE CODE NÀY, MÌNH CHỈ VIỆT HOÁ VÀ FIX LỖI THÔI, NHƯNG CÓ BÊ ĐI ĐÂU THÌ GHI NGUỒN LÀ TỪ MÌNH, CÁM ƠN ` cho mình xin 1 starts nha :3
 
 
 ## Preview
@@ -32,5 +32,5 @@ Sau bước trên bot bạn đã hoạt động rồi đấy, bây giờ bạn c
 
 Đến đây chắc server bạn chạy tốt rồi Đúng không :D Thế bắt đầu đăng nhập acc vào và treo thôi!
 
- ‘ MÌNH KHÔNG PHẢI CHỦ SOURE CODE NÀY, MÌNH CHỈ VIỆT HOÁ VÀ FIX LỖI THÔI, NHƯNG CÓ BÊ ĐI ĐÂU THÌ GHI NGUỒN LÀ TỪ MÌNH, CÁM ƠN` cho mình xin 1 starts nha :3
+`MÌNH KHÔNG PHẢI CHỦ SOURE CODE NÀY, MÌNH CHỈ VIỆT HOÁ VÀ FIX LỖI THÔI, NHƯNG CÓ BÊ ĐI ĐÂU THÌ GHI NGUỒN LÀ TỪ MÌNH, CÁM ƠN` cho mình xin 1 starts nha :3
 
