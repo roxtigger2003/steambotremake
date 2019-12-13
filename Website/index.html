@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>STEAM BOT - Farm card make by roxtigger2003 with love </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css">
+	<link href='https://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/uikit.min.css">
+	<link rel="stylesheet" type="text/css" href="css/uikit.gradient.min.css">
+	<link rel="stylesheet" type="text/css" href="css/remodal.css">
+	<link rel="stylesheet" type="text/css" href="css/remodal-default-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/remodal.min.js"></script>
+	<script type="text/javascript" src="js/uikit.min.js"></script>
+	<script type="text/javascript" src="js/components/form-password.js"></script>
+	<script type="text/javascript" src="js/socket.io.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+
+</head>
+<body>
+
+<div class="uk-grid">
+    <div class="uk-width-1-10"></div>
+    <div class="uk-width-8-10">
+    	<div class="topo_logo">
+    	</div>
+
+    	<div id="content_wrap">
+
+    		<div class="conteudo" id="loading">
+	    		<section class="loader">
+				  <div class="content">
+				    <h1 class="text">Đang kết nối...</h1>
+				    <div class="box">
+				      <i class="fa fa-laptop"></i>
+				      <div class="line"></div>
+				      <i class="fa fa-database"></i>
+				    </div>
+				  </div>
+				</section>
+	    	</div> <!-- loading -->
+
+    		<div class="conteudo hide" id="server_off">
+	    		<h2>Oops đang có lỗi xảy ra</h2>
+	    		<span class="server_erro_message">Không thể kết nối với máy chủ, máy chủ có thể ngừng hoạt động hoặc khởi động lại, vui lòng thử lại sau.</span>
+	    	</div> <!-- server off -->
+
+	    	<div class="conteudo hide" id="login">
+	    		<form class="uk-form" onsubmit="do_login(); return false;" id="form_login">
+	    			<h3>Login</h3>
+		    		<div class="uk-form-row">
+		    			<input type="text" name="email_login" id="email_login" placeholder="Email">
+		    		</div>
+
+				    <div class="uk-form-row uk-form-password">
+				        <input type="password" name="password_login" id="password_login" placeholder="Mật khẩu">
+				        <a class="uk-form-password-toggle" data-uk-form-password>Hiển thị</a>
+				    </div>
+				    <div class="uk-form-row">
+		    			<button type="submit" class="uk-button uk-button-primary">Login</button>
+		    			<button onclick="show_page(4);return false;" class="uk-button">Đăng ký</button>
+		    		</div>
+				    
+				</form>
+	    	</div> <!-- login -->
+
+	    	<div class="conteudo hide" id="register">
+	    		<form class="uk-form" onsubmit="do_register(); return false;" id="form_register">
+	    			<h3>Đăng ký tài khoản mới</h3>
+		    		<div class="uk-form-row">
+		    			<input type="text" name="email_register" id="email_register" placeholder="Email">
+		    		</div>
+
+				    <div class="uk-form-row uk-form-password">
+				        <input type="password" name="password_register" id="password_register" placeholder="Mật Khẩu">
+				        <a class="uk-form-password-toggle" data-uk-form-password>Hiển thị</a>
+				    </div>
+				    <div class="uk-form-row">
+		    			<button type="submit" class="uk-button uk-button-primary">Đăng Ký</button>
+		    			<button onclick="show_page(1);return false;" class="uk-button">Đăng nhập</button>
+		    		</div>
+				    
+				</form>
+	    	</div> <!-- register -->
+
+	    	<div class="conteudo hide" id="log">
+	    		<div id="menu_topo">
+	    			<nav class="uk-navbar">
+					    <ul class="uk-navbar-nav">
+					        <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a><i class="fa fa-steam" aria-hidden="true"></i> Steam</a>
+					        	<div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
+                                    <ul class="uk-nav uk-nav-navbar">
+                                        <li id="add_steam_acc_btn" class="hide"><a data-remodal-target="add_steam_account">Thêm tài khoản steam</a></li>
+                                        <li id="add_steam_key_btn" class="hide"><a data-remodal-target="add_key_steam_account">Thêm key steam</a></li>
+                                        <li id="check_games" class="hide"><a onclick="check_games();">Kiểm tra game</a></li>
+                                         <li id="gen_steamguard_code" class="hide"><a onclick="open_steamguard_code_gen();">Tạo mã SteamGuard</a></li>
+                                        <li id="remove_steam_acc_btn" class="hide"><a onclick="remove_steam_acc();">Xoá account steam</a></li>
+                                    </ul>
+                                </div>
+					        </li>
+					        <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a><i class="fa fa-cog" aria-hidden="true"></i> Tài khoản</a>
+					        	<div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
+                                    <ul class="uk-nav uk-nav-navbar">
+                                    	<li><a onclick="show_keys()">Key trò chơi chưa sử dụng</a></li>
+                                        <li><a onclick="do_logout()">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+					        </li>
+					    </ul>
+					    <div id="stats">
+					   		<span class='stats_info'>Steam Status: <span class="status_value" id="steam_status_value">
+					   			<i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+					   		</span></span>
+
+					   		<span class='stats_info'>Hàng mới: <span class="status_value" id="new_itens_value">
+					    		<i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+					    	</span></span>
+
+					    	<span class='stats_info'>Server Uptime: <span class="status_value" id="uptime_value">
+					    		<i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+					    	</span></span>
+
+					    	<span class='stats_info'>Cập nhật mới: <span class="status_value" id="new_update_time">
+					    		<i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+					    	</span></span>
+					    	
+					    </div>
+					</nav>
+	    		</div> <!-- menu topo -->
+	    		<div id="log">
+	    			<table class="uk-table uk-table-striped">
+	    				<caption>Log tài khoản của bạn</caption>
+					    <thead>
+					        <tr>
+					            <th width='170'>Data</th>
+					            <th>Thông tin</th>
+					        </tr>
+					    </thead>
+					    <tbody id="log_scroll">
+					        
+					    </tbody>
+	    			</table>
+	    		</div> <!-- log -->
+	    	</div> <!-- menu topo -->
+	    </div> <!-- log -->
+    </div> <!-- uk-width-8-10 -->
+    <div class="uk-width-1-10"></div>
+</div> <!-- uk-grid -->
+
+<div class="remodal" data-remodal-id="error_modal" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h2 id="error_title"></h2>
+  <p id="error_message">
+    
+  </p>
+  <br>
+  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+</div>
+
+
+<div id="steamguard_code_gen" class="remodal" data-remodal-id="steamguard_code_gen" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h2>Tạo mã SteamGuard</h2>
+  <p>
+  	<div id="code_wrap" class="hide">
+	    <span id="code_big" onclick="select_text(this);"></span>
+	    <div id="code_counter">
+	    	<div id="code_counter_fill">
+	    		
+	    	</div>
+	    </div>
+    </div>
+  </p>
+  <br>
+  <button data-remodal-action="confirm" onclick="close_steamguard_code_gen();" class="remodal-confirm">OK</button>
+</div>
+
+
+<div class="remodal" id="add_steam_account_remodal" data-remodal-id="add_steam_account" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+  <button data-remodal-action="close" class="remodal-close"></button>
+
+  	<h2>Thêm tài khoản Steam</h2>
+  	<form class="uk-form" onsubmit="add_steam_acc(); return false;">
+	  	<div class="uk-form-row">
+			<input type="text" name="steam_acc_login" id="steam_acc_login" placeholder="Tài khoản steam" class="uk-form-width-medium">
+		</div>
+		<div class="uk-form-row">
+			<input type="password" name="steam_acc_password" id="steam_acc_password" placeholder="Mật khẩu tài khoản steam" class="uk-form-width-medium">
+		</div>
+		<div class="uk-form-row">
+			<button class="uk-button uk-button-mini uk-button-primary" onclick="$(this).hide();$('#steam_acc_shared_secret').show(); return false;" style="margin: 0 auto; margin-bottom: 5px;display: block;">Thêm Shared Secret</button>
+			<input type="text" class="hide" style="width: 200px;" name="steam_acc_shared_secret" id="steam_acc_shared_secret" placeholder="Thêm Shared Secret" class="uk-form-width-medium">
+		</div>
+  <br>
+  	<button data-remodal-action="confirm" onclick="add_steam_acc();" type="submit" class="remodal-confirm">OK</button>
+	<button data-remodal-action="cancel" class="remodal-cancel">Huỷ</button>
+  </form>
+</div>
+
+
+
+<div class="remodal" id="steam_guard_remodal" data-remodal-id="steamguard_steam_account" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+  <button data-remodal-action="close" class="remodal-close"></button>
+
+  	<h2>Nhập mã SteamGuard</h2>
+  	<form class="uk-form" onsubmit="send_steamguard(); return false;">
+	  	<div class="uk-form-row">
+			<input type="text" name="steam_steamguard" id="steam_steamguard" placeholder="Mật mã SteamGuard" class="uk-form-width-medium">
+		</div>
+  <br>
+  	<button data-remodal-action="confirm" onclick="send_steamguard();" type="submit" class="remodal-confirm">OK</button>
+  	<button data-remodal-action="cancel" class="remodal-cancel">Huỷ</button>  
+  </form>
+</div>
+
+<div class="remodal" id="steam_add_key_remodal" data-remodal-id="add_key_steam_account" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+  <button data-remodal-action="close" class="remodal-close"></button>
+
+  	<h2>Thêm trò chơi steam</h2>
+  	<form class="uk-form" onsubmit="add_key_on_steam(); return false;">
+	  	<div class="uk-form-row">
+			<input type="text" name="steam_key" id="steam_key" placeholder="Nhập mã trò chơi" class="uk-form-width-medium">
+		</div>
+  <br>
+  	<button data-remodal-action="confirm" onclick="add_key_on_steam();" type="submit" class="remodal-confirm">OK</button>
+  	<button data-remodal-action="cancel" class="remodal-cancel">Huỷ</button>  
+  </form>
+</div>
+
+
+<div class="remodal" id="steambot_keys_not_used" data-remodal-id="steambot_keys_not_used" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
+  <button data-remodal-action="close" class="remodal-close"></button>
+
+  	<h3>Mã trò chơi không được sử dụng</h3>
+  	<table id="list_code_not_used" class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+		<thead>
+	        <tr>
+	            <th width='100'>Mã</th>
+	            <th width='100'>Bởi</th>
+	            <th width='100'>Trò Chơi</th>
+	            <th></th>
+	        </tr>
+    	</thead>
+    	<tbody id="keys_table">
+
+	    </tbody>
+
+  	</table>
+
+  	<br>
+  	<button data-remodal-action="confirm" onclick="" type="submit" class="remodal-confirm">OK</button> 
+  </form>
+</div>
+
+</body>
+</html>

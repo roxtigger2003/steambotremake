@@ -1,0 +1,10 @@
+{
+	"socket": {
+		"port": "5432"
+	}, 
+	"database": {
+		"accounts": "./db/accounts.db",
+		"logs": "./db/logs.db",
+		"keys": "./db/keys.db"
+	}
+}
