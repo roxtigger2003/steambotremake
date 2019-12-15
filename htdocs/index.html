@@ -100,14 +100,14 @@
                                         <li id="add_steam_key_btn" class="hide"><a data-remodal-target="add_key_steam_account">Thêm key steam</a></li>
                                         <li id="check_games" class="hide"><a onclick="check_games();">Kiểm tra game</a></li>
                                          <li id="gen_steamguard_code" class="hide"><a onclick="open_steamguard_code_gen();">Tạo mã SteamGuard</a></li>
-                                        <li id="remove_steam_acc_btn" class="hide"><a onclick="remove_steam_acc();">Xoá account steam</a></li>
+                                        <li id="remove_steam_acc_btn" class="hide"><a onclick="remove_steam_acc();">Xoá tài khoản steam</a></li>
                                     </ul>
                                 </div>
 					        </li>
 					        <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a><i class="fa fa-cog" aria-hidden="true"></i> Tài khoản</a>
 					        	<div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
                                     <ul class="uk-nav uk-nav-navbar">
-                                    	<li><a onclick="show_keys()">Key trò chơi chưa sử dụng</a></li>
+                                    	<li><a onclick="show_keys()">Key trò chơi đã sử dụng</a></li>
                                         <li><a onclick="do_logout()">Đăng xuất</a></li>
                                     </ul>
                                 </div>
@@ -118,7 +118,7 @@
 					   			<i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
 					   		</span></span>
 
-					   		<span class='stats_info'>Hàng mới: <span class="status_value" id="new_itens_value">
+					   		<span class='stats_info'>Ítem mới: <span class="status_value" id="new_itens_value">
 					    		<i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
 					    	</span></span>
 
@@ -135,7 +135,7 @@
 	    		</div> <!-- menu topo -->
 	    		<div id="log">
 	    			<table class="uk-table uk-table-striped">
-	    				<caption>Log tài khoản của bạn</caption>
+	    				<caption>Cập nhật về tài khoản của bạn</caption>
 					    <thead>
 					        <tr>
 					            <th width='170'>Data</th>
@@ -198,7 +198,7 @@
 			<input type="text" class="hide" style="width: 200px;" name="steam_acc_shared_secret" id="steam_acc_shared_secret" placeholder="Thêm Shared Secret" class="uk-form-width-medium">
 		</div>
   <br>
-  	<button data-remodal-action="confirm" onclick="add_steam_acc();" type="submit" class="remodal-confirm">OK</button>
+  	<button data-remodal-action="confirm" onclick="add_steam_acc();" type="submit" class="remodal-confirm">Xác Nhận</button>
 	<button data-remodal-action="cancel" class="remodal-cancel">Huỷ</button>
   </form>
 </div>
@@ -211,10 +211,10 @@
   	<h2>Nhập mã SteamGuard</h2>
   	<form class="uk-form" onsubmit="send_steamguard(); return false;">
 	  	<div class="uk-form-row">
-			<input type="text" name="steam_steamguard" id="steam_steamguard" placeholder="Mật mã SteamGuard" class="uk-form-width-medium">
+			<input type="text" name="steam_steamguard" id="steam_steamguard" placeholder="Mật mã SteamGuard" class="uk-form-width-medium" maxlength="5" pattern="[A]" title="Mã SteamGuard phải viết hoa!">
 		</div>
   <br>
-  	<button data-remodal-action="confirm" onclick="send_steamguard();" type="submit" class="remodal-confirm">OK</button>
+  	<button data-remodal-action="confirm" onclick="send_steamguard();" type="submit" class="remodal-confirm">Xác Nhận</button>
   	<button data-remodal-action="cancel" class="remodal-cancel">Huỷ</button>  
   </form>
 </div>
@@ -228,7 +228,7 @@
 			<input type="text" name="steam_key" id="steam_key" placeholder="Nhập mã trò chơi" class="uk-form-width-medium">
 		</div>
   <br>
-  	<button data-remodal-action="confirm" onclick="add_key_on_steam();" type="submit" class="remodal-confirm">OK</button>
+  	<button data-remodal-action="confirm" onclick="add_key_on_steam();" type="submit" class="remodal-confirm">Xác Nhận</button>
   	<button data-remodal-action="cancel" class="remodal-cancel">Huỷ</button>  
   </form>
 </div>
@@ -237,7 +237,7 @@
 <div class="remodal" id="steambot_keys_not_used" data-remodal-id="steambot_keys_not_used" data-remodal-options="hashTracking: false, closeOnOutsideClick: false">
   <button data-remodal-action="close" class="remodal-close"></button>
 
-  	<h3>Mã trò chơi không được sử dụng</h3>
+  	<h3>Mã trò chơi đã được sử dụng</h3>
   	<table id="list_code_not_used" class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
 		<thead>
 	        <tr>

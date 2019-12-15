@@ -202,7 +202,7 @@ function show_page(page) {
 function socket_connect() {
 	socket = null;
 
-	var socket_address = "http://diachiservercuaban:5432";
+	var socket_address = "http://217.61.16.55:5432";
 
 	if (location.href.indexOf('localhost') != -1) {
 		socket_address = "http://localhost:5432";
